@@ -1611,7 +1611,7 @@ contract LotteryRooms is VRFConsumerBaseV2Plus, ReentrancyGuard {
     }
 
     //Delete Room And Refund the Amount
-    function RoomDeleteAndRefund(uint256 roomId) external onlyMyOwner {
+    function RoomDeleteAndRefund(uint256 roomId) external onlyMyOwner nonReentrant{
         require(roomId > 0 && roomId <= rooms.length, "Invalid roomId");
 
         Room storage room = rooms[roomId - 1];
